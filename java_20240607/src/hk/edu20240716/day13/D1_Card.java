@@ -1,6 +1,6 @@
 package hk.edu20240716.day13;
 
-public class Card {
+public class D1_Card {
 	
 	//카드를 만들기 위한 필드를 선언하자
 	public static final String[] DECK={"♥","♣","♠","◈"};
@@ -10,7 +10,7 @@ public class Card {
 	private String Card; //◈9 이런 형식으로 값이 저장될 것임
 	
 	
-	public Card() {
+	public D1_Card() {
 		init();//Card 객체가 생성되면 init()메서드 실행
 		
 	}
@@ -40,6 +40,22 @@ public class Card {
 	@Override
 	public String toString() {
 		return "["+Card+"]";
+	}
+	
+	
+	//Card객체 내부에 card멤버필드끼리 비교하는 기능으로 재정의 
+	@Override
+	public boolean equals(Object obj) {
+		boolean isS=false;
+		D1_Card ca=(D1_Card)obj;//Card--> Object--> Card형변환
+		if(Card.equals(ca.getCard())) {
+			isS=true;
+		}
+		return isS;
+	}
+	//equals오버라이딩하면 hashcode도 오버라이딩해야됨
+	public int hashCode() {
+		return Card.hashCode()+137;
 	}
 	
 	}
